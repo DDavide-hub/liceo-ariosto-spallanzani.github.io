@@ -1,5 +1,5 @@
 const operation = document.getElementById("operation")
-const sign = ['+', '-', ':', 'x']
+const sign = ["+", "x", "-", ":"]
 const number = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
 const command = ["0"]
 const ans = ""
@@ -32,6 +32,7 @@ const click1 = () => {
 		operation.innerHTML += "1";
 		command[command.length - 1] += "1";
 	}
+	document.getElementById("demo").innerHTML = command;
 };
 
 const click2 = () => {
@@ -121,15 +122,69 @@ const click9 = () => {
 		command[command.length - 1] += "9";
 	}
 };
-/*
+
 const click0 = () => {
-	if (!((command.length === 1) && (command[0] === "0"))) {
-		if (!((command[command.length - 1] == "0") && ((command[command.length - 2] == "+") || (command[command.length - 2] == "-") || (command[command.length - 2] == ":") || (command[command.length - 2] == "x")))) {
-			command[command.length - 1] += "0";
-		}
+	if (command[(command.length - 1)] != "0") {
+		command[command.length - 1] += "0";
+		operation.innerHTML += "0";
 	}
-}
-*/
+
+};
+
+const clickSum = () => {
+	if (command[(command.length - 1)] == "") {
+		result.innerHTML = "Syntax error";
+	}
+	else{
+		operation.innerHTML += "+";
+		command.push("+");
+		command.push("");
+	}	
+};
+
+const clickDiff = () =>{
+	if (command[(command.length - 1)] == "") {
+		result.innerHTML = "Syntax error";
+	}
+	else{
+		operation.innerHTML += "-";
+		command.push("-");
+		command.push("");
+	}		
+};
+
+const clickPer = () => {
+	if (command[(command.length - 1)] == "") {
+		result.innerHTML = "Syntax error";
+	}
+	else{
+		operation.innerHTML += "x";
+		command.push("x");
+		command.push("");
+	}	
+};
+
+const clickDiv = () => {
+	if (command[(command.length - 1)] == "") {
+		result.innerHTML = "Syntax error";
+	}
+	else{
+		operation.innerHTML += ":";
+		command.push(":");
+		command.push("");
+	}	
+};
+
+const clickDel = () => {
+	if (command[command.length - 1] == "") {
+		command.pop(); //elimina spazio vuoto
+		command.pop(); //elimina segno
+	}
+	else{
+		command[command.length - 1] = command[command.length - 1].slice(0, (command[command.length - 1].length - 1));
+	}
+	operation.innerHTML = operation.innerHTML.slice(0, ((operation.innerHTML.length) - 1));
+};
 
 button1.onclick = click1
 button2.onclick = click2
@@ -142,47 +197,14 @@ button8.onclick = click8
 button9.onclick = click9
 button0.onclick = click0
 buttonSum.onclick = clickSum
+buttonDiff.onclick = clickDiff
+buttonPer.onclick = clickPer
+buttonDiv.onclick = clickDiv
+buttonDel.onclick = clickDel
+
+
 
 
 /*
-const clickSum = () => {
-	const l = operation.innerHTML.length - 1
-	for (let i = 0; i ++; i <= signLeng) {
-		if (operation.innerHTML[l]===sign[i]){
-			throw "Syntax error"
-		}
-	}operation.innerHTML += "+"
-}
 
-const clickDiff = () => {
-	const l = operation.innerHTML.length - 1
-	for (let i = 0; i ++; i <= signLeng) {
-		if (operation.innerHTML[signLeng]===sign[i]){
-			throw "Syntax error"
-		}
-	}operation.innerHTML += "-"
-}
-
-const clickPer = () => {
-	const l = operation.length - 1
-	for (let i = 0; i ++; i <= signLeng) {
-		if (operation.innerHTML[signLeng]===sign[i]){
-			throw "Syntax error"
-		}
-	}operation.innerHTML += "x"
-}
-
-const clickDiv = () => {
-	const l = operation.length - 1
-	for (let i = 0; i ++; i <= signLeng) {
-		if (operation.innerHTML[legSingn]===sign[i]){
-			throw "Syntax error"
-		}
-	}operation.innerHTML += ":"
-}
-
-const clickDel = () => {
-	const l = operation.length - 1
-	(operation.innerHTML==="0") ? null : operation.innerHTML[l] = "";
-}
 */
