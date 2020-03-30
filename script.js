@@ -1,10 +1,3 @@
-const operation = document.getElementById("operation")
-const sign = ["+", "x", "-", ":"]
-const number = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
-const command = ["0"]
-const ans = ""
-const signLeng = sign.length
-
 const result = document.getElementById("result")
 const button1 = document.getElementById("button1")
 const button2 = document.getElementById("button2")
@@ -22,6 +15,14 @@ const buttonPer = document.getElementById("buttonPer")
 const buttonDiv = document.getElementById("buttonDiv")
 const buttonDel = document.getElementById("buttonDel")
 const buttonCalc = document.getElementById("buttonCalc")
+const operation = document.getElementById("operation")
+
+const sign = ["+", "x", "-", ":"]
+const number = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
+const command = ["0"]
+const ans = "0"
+
+const changeResult = () => setTimeout(x => result.innerHTML = ans, 2000);
 
 const click1 = () => {
 	if (command[command.length - 1] === "0") {
@@ -37,7 +38,7 @@ const click1 = () => {
 		operation.innerHTML += "1";
 		command[command.length - 1] += "1";
 	}
-	//document.getElementById("demo").innerHTML = command; //usato per fare prove
+	//document.getElementById("demo").innerHTML = commandCopy; //usato per fare prove
 };
 
 const click2 = () => {
@@ -179,6 +180,7 @@ const click0 = () => {
 const clickSum = () => {
 	if (command[(command.length - 1)] == "") {
 		result.innerHTML = "Syntax error";
+		changeResult();
 	}
 	else{
 		operation.innerHTML += "+";
@@ -190,6 +192,7 @@ const clickSum = () => {
 const clickDiff = () =>{
 	if (command[(command.length - 1)] == "") {
 		result.innerHTML = "Syntax error";
+		changeResult();
 	}
 	else{
 		operation.innerHTML += "-";
@@ -201,6 +204,7 @@ const clickDiff = () =>{
 const clickPer = () => {
 	if (command[(command.length - 1)] == "") {
 		result.innerHTML = "Syntax error";
+		changeResult();
 	}
 	else{
 		operation.innerHTML += "x";
@@ -212,6 +216,7 @@ const clickPer = () => {
 const clickDiv = () => {
 	if (command[(command.length - 1)] == "") {
 		result.innerHTML = "Syntax error";
+		changeResult();
 	}
 	else{
 		operation.innerHTML += ":";
@@ -231,6 +236,32 @@ const clickDel = () => {
 	operation.innerHTML = operation.innerHTML.slice(0, ((operation.innerHTML.length) - 1)); //rimpiazza ultima cifra o segno dell'operazione
 };
 
+const clickCalc = () => {
+	const commandCopy = command.map(x => x);
+	const order = [];
+	for (let i = 0; i ++; i <= (commandCopy.length - 1)) {
+		if ((commandCopy[i] === "x") || (commandCopy[i] === ":")) {
+			order.push(commandCopy[i - 1]);
+			order.push(commandCopy[i]);
+			order.push(commandCopy[i + 1]);
+			commandCopy.slice(0, i - 1);
+			commandCopy.slice(0, i - 1);
+			commandCopy.slice(0, i - 1);
+		}
+	}
+	for (let i = 0; i ++; i <= (commandCopy.length - 1)) {
+		if ((commandCopy[i] === "+") || (commandCopy[i] === "-")) {
+			order.push(commandCopy[i - 1]);
+			order.push(commandCopy[i]);
+			order.push(commandCopy[i + 1]);
+			commandCopy.slice(0, i - 1);
+			commandCopy.slice(0, i - 1);
+			commandCopy.slice(0, i - 1);
+		}
+	}
+};
+
+
 button1.onclick = click1
 button2.onclick = click2
 button3.onclick = click3
@@ -246,7 +277,7 @@ buttonDiff.onclick = clickDiff
 buttonPer.onclick = clickPer
 buttonDiv.onclick = clickDiv
 buttonDel.onclick = clickDel
-
+buttonCalc.onclick = clickCalc
 
 
 
