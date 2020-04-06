@@ -16,13 +16,14 @@ const buttonDiv = document.getElementById("buttonDiv")
 const buttonDel = document.getElementById("buttonDel")
 const buttonCalc = document.getElementById("buttonCalc")
 const operation = document.getElementById("operation")
+//document.getElementById("demo").innerHTML = 1 / 0; //usato per fare prove
 
-const sign = ["+", "x", "-", ":"]
 const number = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
 const command = ["0"]
 const ans = "0"
 
-const changeResult = () => setTimeout(x => result.innerHTML = ans, 2000);
+const syntError = () => result.innerHTML = "Syntax error"; setTimeout(x => result.innerHTML = ans, 2000);
+
 
 const click1 = () => {
 	if (command[command.length - 1] === "0") {
@@ -179,8 +180,7 @@ const click0 = () => {
 
 const clickSum = () => {
 	if (command[(command.length - 1)] == "") {
-		result.innerHTML = "Syntax error";
-		changeResult();
+		syntError();
 	}
 	else{
 		operation.innerHTML += "+";
@@ -191,8 +191,7 @@ const clickSum = () => {
 
 const clickDiff = () =>{
 	if (command[(command.length - 1)] == "") {
-		result.innerHTML = "Syntax error";
-		changeResult();
+		syntError();
 	}
 	else{
 		operation.innerHTML += "-";
@@ -202,24 +201,22 @@ const clickDiff = () =>{
 };
 
 const clickPer = () => {
-	if (command[(command.length - 1)] == "") {
-		result.innerHTML = "Syntax error";
-		changeResult();
-	}
-	else{
-		operation.innerHTML += "x";
+	/*if (command[(command.length - 1)] == "") {
+		syntError();
+	}*/
+	//else{
+		operation.innerHTML += "*"
 		command.push("x");
 		command.push("");
-	}	
+	//}	
 };
 
 const clickDiv = () => {
 	if (command[(command.length - 1)] == "") {
-		result.innerHTML = "Syntax error";
-		changeResult();
+		syntError();
 	}
 	else{
-		operation.innerHTML += ":";
+		operation.innerHTML += " / ";
 		command.push(":");
 		command.push("");
 	}	
@@ -231,34 +228,89 @@ const clickDel = () => {
 		command.pop(); //elimina segno
 	}
 	else{
-		command[command.length - 1] = command[command.length - 1].slice(0, (command[command.length - 1].length - 1)); //rimpiazza ultima cifra del numero nel command
+		command[command.length - 1] = command[command.length - 1].slice(0, (command[command.length - 1].length - 1)); //slice restituisce parte che taglia
 	}
-	operation.innerHTML = operation.innerHTML.slice(0, ((operation.innerHTML.length) - 1)); //rimpiazza ultima cifra o segno dell'operazione
+	operation.innerHTML = operation.innerHTML.slice(0, ((operation.innerHTML.length) - 1)); 
 };
 
 const clickCalc = () => {
-	const commandCopy = command.map(x => x);
-	const order = [];
-	for (let i = 0; i ++; i <= (commandCopy.length - 1)) {
-		if ((commandCopy[i] === "x") || (commandCopy[i] === ":")) {
-			order.push(commandCopy[i - 1]);
-			order.push(commandCopy[i]);
-			order.push(commandCopy[i + 1]);
-			commandCopy.slice(0, i - 1);
-			commandCopy.slice(0, i - 1);
-			commandCopy.slice(0, i - 1);
-		}
+	result.innerHTML = eval(operation.innerHTML);
+
+
+
+	/*
+	if (command.length % 2 === 0) {
+		syntError();
 	}
-	for (let i = 0; i ++; i <= (commandCopy.length - 1)) {
-		if ((commandCopy[i] === "+") || (commandCopy[i] === "-")) {
-			order.push(commandCopy[i - 1]);
-			order.push(commandCopy[i]);
-			order.push(commandCopy[i + 1]);
-			commandCopy.slice(0, i - 1);
-			commandCopy.slice(0, i - 1);
-			commandCopy.slice(0, i - 1);
+	else {
+		const commandCopy = command.map(x => (x.length === 1) ? x : parseFloat(x));
+		const l = commandCopy.length;
+		for (let i = (l - 2); i -= 2; i >= 1) {
+			let r = 0;
+			if (commandCopy[i] === "x") {
+				r = per(commandCopy[i - 1], commandCopy[i + 1]);
+				commandCopy[i - 1] = r;
+				commandCopy.pop();
+				commandCopy.pop();
+			} 
+			else if (commandCopy[i] === ":") {
+				r = div(commandCopy[i - 1], commandCopy[i + 1]);
+				commandCopy[i - 1] = r;
+				commandCopy.pop();
+				commandCopy.pop();
+			}
 		}
+		let times = Math.floor(commandCopy.length % 2); //numero operazioni
+		for (let t = 0; t ++; t < times) {
+			let c = commandCopy[1]; //segno operazione
+			let partialResult = 0;
+			c === "+" ? partialResult = sum(commandCopy[0], commandCopy[2]) : partialResult = diff(commandCopy[0], commandCopy[2]); //da cambiare se si mettono altre operazioni
+			commandCopy.shift();
+			commandCopy.shift();
+			commandCopy[0] = partialResult;
+		}
+		result.innerHTML = commandCopy[0];
 	}
+	do {
+		let a = order[0];
+		let s = order[1];
+		let b = order [2];
+		let r = 0;
+		switch (s) {
+			case "x":
+				r = per(a, b);
+				break;
+			case ":":
+				if (b === 0) {
+					if (a === 0) {
+						r = "Undefined";
+					}
+					else {
+						r = "Math error";
+					}
+				}
+				else {
+					r = div(a, b);
+				}
+				break;
+			case "+":
+				r = sum(a, b);
+				break;
+			case "-":
+				r = diff(a, b);
+				break;
+		}
+		if ((r == "Undefined") || (r == "Math error")) {
+			order = [];
+			order[0] = r;
+		}
+		else {
+			order.shift();
+			order.shift();
+			order[0] = r;
+		}
+	} while (order.length !== 1);*/
+	//result.innerHTML = order[0].innerHTML;
 };
 
 
@@ -278,9 +330,3 @@ buttonPer.onclick = clickPer
 buttonDiv.onclick = clickDiv
 buttonDel.onclick = clickDel
 buttonCalc.onclick = clickCalc
-
-
-
-/*
-
-*/
