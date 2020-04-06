@@ -1,36 +1,107 @@
 <!doctype html>
 <html lang="en">
-  <head>
+    <head>
     <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
-    <title>Calcolatrice</title>
-  </head>
-  <body>
-    <h1 align="center">Calcolatrice</h1>
-    <input id="button1" type="button" value="1">
-    <input id="button2" type="button" value="2">
-    <input id="button3" type="button" value="3">
-    <input id="button4" type="button" value="4">
-    <input id="button5" type="button" value="5">
-    <input id="button6" type="button" value="6">
-    <input id="button7" type="button" value="7">
-    <input id="button8" type="button" value="8">
-    <input id="button9" type="button" value="9">
-    <input id="button0" type="button" value="0">
-    <input id="buttonSum" type="button" value="+">
-    <input id="buttonDiff" type="button" value="-">
-    <input id="buttonPer" type="button" value="X">
-    <input id="buttonDiv" type="button" value=":">
-    <input id="buttonCalc" type="button" value="=">
-    <input id="buttonDel" type="button" value="Del">
-    <p id="operation">0</p>
-    <p id="result">0</p>
-    <p id="demo"></p> 
-
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="style.css">
+        <title>Calcolatrice</title>
+    </head>
+    <body>
+        <div class="title">
+            <div class="row">
+                <div class="col-sm">
+                    <h1 align="center">The Calculator</h1>
+                </div>
+            </div>
+        </div>
+        <div class="container operation">
+            <div class="row">
+                <div class="col-sm">
+                    <p id="operation">0</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm">
+                    <p id="result" align="right">0</p>
+                </div> 
+            </div>
+        </div> 
+        
+        <div class="container" align="center">
+            <div class="row">
+                <div class="col-sm tasto">
+                    <input type="submit" id="button7" class="btn number" value="7"></input>
+                </div>
+                <div class="col-sm tasto">
+                    <input type="submit" id="button8" class="btn number" value="8"></input>
+                </div>
+                <div class="col-sm tasto">
+                    <input type="submit" id="button9" class="btn number" value="9"></input>
+                </div>
+                <div class="col-sm tasto">
+                    <input type="submit" id="buttonDel" class="btn sign" value="C"></input>
+                </div>
+            </div>
+        </div> 
+        <div class="container" align="center">
+            <div class="row">
+                <div class="col-sm tasto">
+                    <input type="submit" id="button4" class="btn number" value="4"></input>
+                </div>
+                <div class="col-sm tasto">
+                    <input type="submit" id="button5" class="btn number" value="5"></input>
+                </div>
+                <div class="col-sm tasto">
+                    <input type="submit" id="button6" class="btn number" value="6"></input>
+                </div>
+                <div class="col-sm tasto">
+                    <input type="submit" id="buttonPer" class="btn sign" value="*"></input>
+                </div>
+            </div>
+        </div>
+        <div class="container" align="center">
+            <div class="row">
+                <div class="col-sm tasto">
+                    <input type="submit" id="button1" class="btn number" value="1"></input>
+                </div>
+                <div class="col-sm tasto">
+                    <input type="submit" id="button2" class="btn number" value="2"></input>
+                </div>
+                <div class="col-sm tasto">
+                    <input type="submit" id="button3" class="btn number" value="3"></input>
+                </div>
+                <div class="col-sm tasto">
+                    <input type="submit" id="buttonDiv" class="btn sign" value="/"></input>
+                </div>
+            </div>
+        </div>  
+        <div class="container" align="center">
+            <div class="row">
+                <div class="col-sm tasto">
+                    <input type="submit" id="button0" class="btn number" value="0"></input>
+                </div>
+                <div class="col-sm tasto">
+                    <input type="submit" id="buttonDot" class="btn number" value="."></input>
+                </div>
+                <div class="col-sm tasto">
+                    <input type="submit" id="buttonDiff" class="btn sign" value="-"></input>
+                </div>
+                <div class="col-sm tasto">
+                    <input type="submit" id="buttonSum" class="btn sign" value="+"></input>
+                </div>
+            </div>
+        </div>
+        <div class="container" align="center">
+            <div class="row">
+                <div class="col-sm tasto">
+                    <input type="submit" id="buttonCalc" class="btn calc" value="="></input>
+                </div>
+            </div>
+        </div>    
+    
 
 
     <!-- Optional JavaScript -->

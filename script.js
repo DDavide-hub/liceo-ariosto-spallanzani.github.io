@@ -16,166 +16,49 @@ const buttonDiv = document.getElementById("buttonDiv")
 const buttonDel = document.getElementById("buttonDel")
 const buttonCalc = document.getElementById("buttonCalc")
 const operation = document.getElementById("operation")
-//document.getElementById("demo").innerHTML = 1 / 0; //usato per fare prove
 
-const number = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
-const command = ["0"]
 const ans = "0"
 
 const syntError = () => result.innerHTML = "Syntax error"; setTimeout(x => result.innerHTML = ans, 2000);
 
-
 const click1 = () => {
-	if (command[command.length - 1] === "0") {
-		command[command.length - 1] = "1";
-		if (command.length === 1) {
-			operation.innerHTML = "1";
-		}
-		else {
-			operation.innerHTML = operation.innerHTML.slice(0, ((operation.innerHTML.length) - 1)) + "1";
-		}
-	}
-	else {
-		operation.innerHTML += "1";
-		command[command.length - 1] += "1";
-	}
-	//document.getElementById("demo").innerHTML = commandCopy; //usato per fare prove
+	operation.innerHTML === "0" ? operation.innerHTML = "1" : operation.innerHTML += "1"; 
 };
 
 const click2 = () => {
-	if (command[command.length - 1] === "0") {
-		command[command.length - 1] = "2";
-		if (command.length === 1) {
-			operation.innerHTML = "2";
-		}
-		else {
-			operation.innerHTML = operation.innerHTML.slice(0, ((operation.innerHTML.length) - 1)) + "2";
-		}
-	}
-	else {
-		operation.innerHTML += "2";
-		command[command.length - 1] += "2";
-	}
-}; 
+	operation.innerHTML === "0" ? operation.innerHTML = "2" : operation.innerHTML += "2"; 
+};
 
 const click3 = () => {
-	if (command[command.length - 1] === "0") {
-		command[command.length - 1] = "3";
-		if (command.length === 1) {
-			operation.innerHTML = "3";
-		}
-		else {
-			operation.innerHTML = operation.innerHTML.slice(0, ((operation.innerHTML.length) - 1)) + "3";
-		}
-	}
-	else {
-		operation.innerHTML += "3";
-		command[command.length - 1] += "3";
-	}
+	operation.innerHTML === "0" ? operation.innerHTML = "3" : operation.innerHTML += "3"; 
 };
 
 const click4 = () => {
-	if (command[command.length - 1] === "0") {
-		command[command.length - 1] = "4";
-		if (command.length === 1) {
-			operation.innerHTML = "4";
-		}
-		else {
-			operation.innerHTML = operation.innerHTML.slice(0, ((operation.innerHTML.length) - 1)) + "4";
-		}
-	}
-	else {
-		operation.innerHTML += "4";
-		command[command.length - 1] += "4";
-	}
+	operation.innerHTML === "0" ? operation.innerHTML = "4" : operation.innerHTML += "4"; 
 };
 
 const click5 = () => {
-	if (command[command.length - 1] === "0") {
-		command[command.length - 1] = "5";
-		if (command.length === 1) {
-			operation.innerHTML = "5";
-		}
-		else {
-			operation.innerHTML = operation.innerHTML.slice(0, ((operation.innerHTML.length) - 1)) + "5";
-		}
-	}
-	else {
-		operation.innerHTML += "5";
-		command[command.length - 1] += "5";
-	}
+	operation.innerHTML === "0" ? operation.innerHTML = "5" : operation.innerHTML += "5"; 
 };
 
 const click6 = () => {
-	if (command[command.length - 1] === "0") {
-		command[command.length - 1] = "6";
-		if (command.length === 1) {
-			operation.innerHTML = "6";
-		}
-		else {
-			operation.innerHTML = operation.innerHTML.slice(0, ((operation.innerHTML.length) - 1)) + "6";
-		}
-	}
-	else {
-		operation.innerHTML += "6";
-		command[command.length - 1] += "6";
-	}
-}; 
+	operation.innerHTML === "0" ? operation.innerHTML = "6" : operation.innerHTML += "6"; 
+};
 
 const click7 = () => {
-	if (command[command.length - 1] === "0") {
-		command[command.length - 1] = "7";
-		if (command.length === 1) {
-			operation.innerHTML = "7";
-		}
-		else {
-			operation.innerHTML = operation.innerHTML.slice(0, ((operation.innerHTML.length) - 1)) + "7";
-		}
-	}
-	else {
-		operation.innerHTML += "7";
-		command[command.length - 1] += "7";
-	}
+	operation.innerHTML === "0" ? operation.innerHTML = "7" : operation.innerHTML += "7"; 
 };
 
 const click8 = () => {
-	if (command[command.length - 1] === "0") {
-		command[command.length - 1] = "8";
-		if (command.length === 1) {
-			operation.innerHTML = "8";
-		}
-		else {
-			operation.innerHTML = operation.innerHTML.slice(0, ((operation.innerHTML.length) - 1)) + "8";
-		}
-	}
-	else {
-		operation.innerHTML += "8";
-		command[command.length - 1] += "8";
-	}
+	operation.innerHTML === "0" ? operation.innerHTML = "8" : operation.innerHTML += "8"; 
 };
 
 const click9 = () => {
-	if (command[command.length - 1] === "0") {
-		command[command.length - 1] = "9";
-		if (command.length === 1) {
-			operation.innerHTML = "9";
-		}
-		else {
-			operation.innerHTML = operation.innerHTML.slice(0, ((operation.innerHTML.length) - 1)) + "9";
-		}
-	}
-	else {
-		operation.innerHTML += "9";
-		command[command.length - 1] += "9";
-	}
+	operation.innerHTML === "0" ? operation.innerHTML = "9" : operation.innerHTML += "9"; 
 };
 
 const click0 = () => {
-	if (command[(command.length - 1)] != "0") {
-		command[command.length - 1] += "0";
-		operation.innerHTML += "0";
-	}
-
+	operation.innerHTML === "0" ? null : operation.innerHTML += "0"; 
 };
 
 const clickSum = () => {
