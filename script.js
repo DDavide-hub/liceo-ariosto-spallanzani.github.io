@@ -1,14 +1,4 @@
 const result = document.getElementById("result")
-const button1 = document.getElementById("button1")
-const button2 = document.getElementById("button2")
-const button3 = document.getElementById("button3")
-const button4 = document.getElementById("button4")
-const button5 = document.getElementById("button5")
-const button6 = document.getElementById("button6")
-const button7 = document.getElementById("button7")
-const button8 = document.getElementById("button8")
-const button9 = document.getElementById("button9")
-const button0 = document.getElementById("button0")
 const buttonSum = document.getElementById("buttonSum")
 const buttonDiff = document.getElementById("buttonDiff")
 const buttonPer = document.getElementById("buttonPer")
@@ -16,92 +6,84 @@ const buttonDiv = document.getElementById("buttonDiv")
 const buttonDel = document.getElementById("buttonDel")
 const buttonCalc = document.getElementById("buttonCalc")
 const operation = document.getElementById("operation")
-const ans = document.getElementById("result")
+const limitOperation = 31
+const sign = ["x","/","+","-","*"/*per potenze*/,".", "(", "^"]
+var signStrike = 0 //con const non funziona
+var isDone = false //indica se ho appena calcolato l'espressione
+//const ans = document.getElementById("result")
 
-const click1 = () => {
-	operation.innerHTML === "0" ? operation.innerHTML = "1" : operation.innerHTML += "1"; 
+const clickNumber = (value) => { 
+	if (isDone || (operation.innerHTML === "0")) {
+		operation.innerHTML = value;
+	}
+	else {
+		operation.innerHTML += value;
+	}
 };
 
-const click2 = () => {
-	operation.innerHTML === "0" ? operation.innerHTML = "2" : operation.innerHTML += "2"; 
+const isSign = (value) => {
+	for (let s of sign) {
+		if (value == s) {
+			return true;
+		}
+	}
+	return false;
 };
 
-const click3 = () => {
-	operation.innerHTML === "0" ? operation.innerHTML = "3" : operation.innerHTML += "3"; 
+const isSame = (value) => value === operation.innerHTML.slice(-1);
+
+const clickSumDiff = (value) => {
+	if (isDone) {
+		operation.innerHTML = result.innerHTML + value;
+		isDone = false;
+	}
+	else{
+		switch (operation.innerHTML.slice(-1)){
+			case "+":
+			case "-": 
+				if (!isSame(value)){
+					if (!isSign(operation.innerHTML.slice(-2, -1))) {
+						operation.innerHTML += value;
+					}
+				}
+				break;
+			case ".":
+				break;
+			default:
+				operation.innerHTML += value;
+				break;
+		}
+	}
 };
 
-const click4 = () => {
-	operation.innerHTML === "0" ? operation.innerHTML = "4" : operation.innerHTML += "4"; 
-};
-
-const click5 = () => {
-	operation.innerHTML === "0" ? operation.innerHTML = "5" : operation.innerHTML += "5"; 
-};
-
-const click6 = () => {
-	operation.innerHTML === "0" ? operation.innerHTML = "6" : operation.innerHTML += "6"; 
-};
-
-const click7 = () => {
-	operation.innerHTML === "0" ? operation.innerHTML = "7" : operation.innerHTML += "7"; 
-};
-
-const click8 = () => {
-	operation.innerHTML === "0" ? operation.innerHTML = "8" : operation.innerHTML += "8"; 
-};
-
-const click9 = () => {
-	operation.innerHTML === "0" ? operation.innerHTML = "9" : operation.innerHTML += "9"; 
-};
+const clickPerDiv = (value) => {
+	if (isDone) {
+		operation.innerHTML = result.innerHTML + value;
+		isDone = false;
+	}
+	else {
+		!isSign(operation.innerHTML.slice(-1)) ? operation.innerHTML += value : null;
+	}
+}; 
 
 const click0 = () => {
-	operation.innerHTML === "0" ? null : operation.innerHTML += "0"; 
+	if (operation.innerHTML === "0") {
+			operation.innerHTML = value;
+	}
+	else {
+		operation.innerHTML += value;
+		signStrike = 0;
+	}
 };
 
-const clickDot = () => {
-	operation.innerHTML += ".";
-};
-
-const clickSum = () => {
-	operation.innerHTML += "+"
-};
-
-const clickDiff = () => {
-	operation.innerHTML += "-"
-};
-
-const clickPer = () => {
-	operation.innerHTML += "*"
-};
-
-const clickDiv = () => {
-	operation.innerHTML += "/"
-};
+const clickDot = () => isNaN(operation.innerHTML[operation.innerHTML.length - 1]) ? null : operation.innerHTML += ".";
 
 const clickCalc = () => {
 	eval(operation.innerHTML) == Infinity ? result.innerHTML = "Math error" : result.innerHTML = eval(operation.innerHTML);
-	ans.innerHTML = result.innerHTML.toString();
+	isDone = true;
+	//ans.innerHTML = result.innerHTML.toString();
 };
 
-const clickDel = () => {
-	operation.innerHTML.length === 1 ? operation.innerHTML = "0" : operation.innerHTML = operation.innerHTML.slice(0, (operation.innerHTML.length) - 1);
+const clickC = () => {
+	isDone ? (isDone = false, operation.innerHTML = operation.innerHTML.slice(0, (operation.innerHTML.length) - 1)) : operation.innerHTML.length === 1 ? operation.innerHTML = "0" : operation.innerHTML = operation.innerHTML.slice(0, (operation.innerHTML.length) - 1);
 };
-
-
-button1.onclick = click1
-button2.onclick = click2
-button3.onclick = click3
-button4.onclick = click4
-button5.onclick = click5
-button6.onclick = click6
-button7.onclick = click7
-button8.onclick = click8
-button9.onclick = click9
-button0.onclick = click0
-buttonDot.onclick= clickDot
-buttonCalc.onclick = clickCalc
-buttonSum.onclick = clickSum
-buttonDiff.onclick = clickDiff
-buttonPer.onclick = clickPer
-buttonDiv.onclick = clickDiv
-buttonDel.onclick = clickDel
