@@ -1,11 +1,12 @@
 #operation {
 	margin: 0px;
-	font-size: 130%;
+	font-size: 195%;
 }
 
-#result {
+#operator {
 	margin: 0px;
-	font-size: 195%;
+	height: 5px;
+	font-size: 15px;
 }
 
 h1 {
@@ -59,4 +60,20 @@ input.btn.sign:hover {
 
 input.btn.calc:hover {
 	background-color: #0000cc;
+}
+
+footer {
+	margin-top: 8px;
+}
+
+p {
+	font-style: italic;
+}
+
+a {
+	font-style: italic;
+}
+
+input {
+	font-style: italic;
 }

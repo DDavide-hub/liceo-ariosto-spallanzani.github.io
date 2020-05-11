@@ -7,29 +7,125 @@
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link rel="stylesheet" href="style.css">
-        <title>Calcolatrice</title>
+        <title>The Calculator</title>
     </head>
     <body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="#">The Calculator</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="./homepage.html">Home</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#" onclick="myFunction()">Do you want a best one?</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
         <div class="title">
             <div class="row">
                 <div class="col-sm">
-                    <h1 align="center">The Calculator</h1>
+                    <h1 align="center">La Calcolatrice Traditrice</h1>
                 </div>
             </div>
         </div>
         <div class="container operation">
             <div class="row">
                 <div class="col-sm">
-                    <p id="operation">6*-2</p>
-                </div>
+                    <p id="operator" align="left"></p>
+                </div> 
             </div>
             <div class="row">
                 <div class="col-sm">
-                    <p id="result" align="right">0</p>
+                    <p id="operation" align="left">0</p>
                 </div> 
             </div>
         </div> 
         
+        <div class="container" align="center">
+            <div class="row">
+                <div class="col-sm tasto">
+                    <input type="submit" id="buttonPi" class="btn sign" value="Pi" onclick="PiAnde(this.value)"></input>
+                </div>
+                <div class="col-sm tasto">
+                    <input type="submit" id="buttone" class="btn sign" value="e" onclick="PiAnde(this.value)"></input>
+                </div>
+                <div class="col-sm tasto">
+                    <input type="submit" id="buttonPlusLess" class="btn sign" value="+-" onclick="plusLess()"></input>
+                </div>
+                <div class="col-sm tasto">
+                    <input type="submit" id="buttonHelp" class="btn sign" value="help" onclick="help()"></input>
+                </div>
+            </div>
+        </div> 
+        <div class="container" align="center">
+            <div class="row">
+                <div class="col-sm tasto">
+                    <input type="submit" id="buttonM1" class="btn sign" value="M1" onclick="memory(this.value)"></input>
+                </div>
+                <div class="col-sm tasto">
+                    <input type="submit" id="buttonM1C" class="btn sign" value="M1C" onclick="memory(this.value)"></input>
+                </div>
+                <div class="col-sm tasto">
+                    <input type="submit" id="buttonM2" class="btn sign" value="M2" onclick="memory(this.value)"></input>
+                </div>
+                <div class="col-sm tasto">
+                    <input type="submit" id="buttonM2C" class="btn sign" value="M2C" onclick="memory(this.value)"></input>
+                </div>
+            </div>
+        </div> 
+        <div class="container" align="center">
+            <div class="row">
+                <div class="col-sm tasto">
+                    <input type="submit" id="button^" class="btn sign" value="^" onclick="clickOperator(this.value)"></input>
+                </div>
+                <div class="col-sm tasto">
+                    <input type="submit" id="buttonE" class="btn sign" value="E" onclick="clickOperator(this.value)"></input>
+                </div>
+                <div class="col-sm tasto">
+                    <input type="submit" id="buttonlog" class="btn sign" value="log" onclick="clickAngleFattLog(this.value)"></input>
+                </div>
+                <div class="col-sm tasto">
+                    <input type="submit" id="buttonln" class="btn sign" value="ln" onclick="clickAngleFattLog(this.value)"></input>
+                </div>
+            </div>
+        </div> 
+        <div class="container" align="center">
+            <div class="row">
+                <div class="col-sm tasto">
+                    <input type="submit" id="buttonasin" class="btn sign" value="asin" onclick="clickAngleFattLog(this.value)"></input>
+                </div>
+                <div class="col-sm tasto">
+                    <input type="submit" id="buttonacos" class="btn sign" value="acos" onclick="clickAngleFattLog(this.value)"></input>
+                </div>
+                <div class="col-sm tasto">
+                    <input type="submit" id="buttonatan" class="btn sign" value="atan" onclick="clickAngleFattLog(this.value)"></input>
+                </div>
+                <div class="col-sm tasto">
+                    <input type="submit" id="button!" class="btn sign" value="!" onclick="clickAngleFattLog(this.value)"></input>
+                </div>
+            </div>
+        </div> 
+        <div class="container" align="center">
+            <div class="row">
+                <div class="col-sm tasto">
+                    <input type="submit" id="buttonsin" class="btn sign" value="sin" onclick="clickAngleFattLog(this.value)"></input>
+                </div>
+                <div class="col-sm tasto">
+                    <input type="submit" id="buttoncos" class="btn sign" value="cos" onclick="clickAngleFattLog(this.value)"></input>
+                </div>
+                <div class="col-sm tasto">
+                    <input type="submit" id="buttontan" class="btn sign" value="tan" onclick="clickAngleFattLog(this.value)"></input>
+                </div>
+                <div class="col-sm tasto">
+                    <input type="submit" id="buttonAC" class="btn sign" value="AC" onclick="AC()"></input>
+                </div>
+            </div>
+        </div> 
         <div class="container" align="center">
             <div class="row">
                 <div class="col-sm tasto">
@@ -58,7 +154,7 @@
                     <input type="submit" id="button6" class="btn number" value="6" onclick="clickNumber(this.value)"></input>
                 </div>
                 <div class="col-sm tasto">
-                    <input type="submit" id="buttonPer" class="btn sign" value="x" onclick="clickPerDiv(this.value)"></input>
+                    <input type="submit" id="buttonPer" class="btn sign" value="*" onclick="clickOperator(this.value)"></input>
                 </div>
             </div>
         </div>
@@ -74,23 +170,23 @@
                     <input type="submit" id="button3" class="btn number" value="3" onclick="clickNumber(this.value)"></input>
                 </div>
                 <div class="col-sm tasto">
-                    <input type="submit" id="buttonDiv" class="btn sign" value="/" onclick="clickPerDiv(this.value)"></input>
+                    <input type="submit" id="buttonDiv" class="btn sign" value="/" onclick="clickOperator(this.value)"></input>
                 </div>
             </div>
         </div>  
         <div class="container" align="center">
             <div class="row">
                 <div class="col-sm tasto">
-                    <input type="submit" id="button0" class="btn number" value="0" onclick="click0(this.value)"></input>
+                    <input type="submit" id="button0" class="btn number" value="0" onclick="clickNumber(this.value)"></input>
                 </div>
                 <div class="col-sm tasto">
                     <input type="submit" id="buttonDot" class="btn number" value="." onclick="clickDot()"></input>
                 </div>
                 <div class="col-sm tasto">
-                    <input type="submit" id="buttonDiff" class="btn sign" value="-" onclick="clickSumDiff(this.value)"></input>
+                    <input type="submit" id="buttonDiff" class="btn sign" value="-" onclick="clickOperator(this.value)"></input>
                 </div>
                 <div class="col-sm tasto">
-                    <input type="submit" id="buttonSum" class="btn sign" value="+" onclick="clickSumDiff(this.value)"></input>
+                    <input type="submit" id="buttonSum" class="btn sign" value="+" onclick="clickOperator(this.value)"></input>
                 </div>
             </div>
         </div>
@@ -110,5 +206,8 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script src="./script.js"></script>
-  </body>
+    <footer class="container footer">
+        <p align="center">© Davo fase 1-fase 2 2020</p>
+    </footer>
+    </body>
 </html>
