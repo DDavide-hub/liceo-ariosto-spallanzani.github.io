@@ -281,7 +281,7 @@ const clickCalc = () => {
 					operation.innerHTML = Math.pow(Number(firstNumber), 1/2);
 					break;
 				}
-				else if ((Number(operation.innerHTML) === 0) || ((Number(operation.innerHTML) % 2 === 0) && (Number(firsteNumber) < 0))) {
+				else if ((Number(operation.innerHTML) === 0) || (((Number(operation.innerHTML) % 2) === 0) && (Number(firstNumber) < 0))) {
 					alert("Math error");
 					return 0;
 				}
