@@ -1,6 +1,5 @@
 const operation = document.getElementById("operation")
 const operator = document.getElementById("operator")
-const limitResult = 25
 let isDone = false
 let firstNumber = ""
 let isAdding = false;
@@ -22,8 +21,9 @@ const clickNumber = (value) => {
 			if (operation.innerHTML.length === 1) {
 				operation.innerHTML = value;
 			}
-			else if (operation.innerHTML[operation.innerHTML.length - 2] === "-") {
-				operation.innerHTML[operation.innerHTML.length - 1] = value;
+			else if ((operation.innerHTML.length === 2) && (operation.innerHTML[0] ==="-")) {
+				operation.innerHTML = operation.innerHTML[0];
+				operation.innerHTML += value;
 			}
 			else {
 				operation.innerHTML += value;
@@ -281,7 +281,7 @@ const clickCalc = () => {
 					operation.innerHTML = Math.pow(Number(firstNumber), 1/2);
 					break;
 				}
-				else if (Number(operation.innerHTML) === 0){
+				else if ((Number(operation.innerHTML) === 0) || ((Number(operation.innerHTML) % 2 === 0) && (Number(firsteNumber) < 0))) {
 					alert("Math error");
 					return 0;
 				}

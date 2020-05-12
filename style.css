@@ -41,6 +41,10 @@ div.container {
 	color: #0000FF;
 }
 
+.btn.btn-dark.btn-lg {
+	width: 30%;
+	border-radius: 5px;
+}
 input.btn.number:hover {
 	background-color: #f2f2f2;
 }
