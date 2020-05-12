@@ -2,7 +2,7 @@ const operation = document.getElementById("operation")
 const operator = document.getElementById("operator")
 let isDone = false
 let firstNumber = ""
-let isAdding = false;
+let isAdding = false
 let memory1 = ""
 let memory2 = ""
 
@@ -62,7 +62,7 @@ const clickDot = () => {
 		if (operation.innerHTML[operation.innerHTML.length - 1] === operator.innerHTML) {
 				operation.innerHTML = "0.";
 		}
-		else if (operation.innerHTML.indexOf(".")) {
+		else if (operation.innerHTML.indexOf(".") === -1) {
 				operation.innerHTML += ".";
 		}
 	}
@@ -338,7 +338,7 @@ const memory = (value) => {
 			}
 			break;
 	}	
-}
+};
 
 const PiAnde = (value) => {
 	switch (value) {
